@@ -80,7 +80,7 @@
 
       const destroy = async (id) => {
         try {
-          const request = await fetch('http://localhost:3000/'+id,{
+          const request = await fetch('http://localhost:3000/usuario/'+id,{
             method:"DELETE",
             headers : {
               "Content-Type": "application/json",
