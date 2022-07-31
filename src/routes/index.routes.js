@@ -1,24 +1,30 @@
 const Router = require('express');
 const router = Router();
 
-const {home, index, create, edit, show, store, destroy, update} = require('../controllers/index.controller.js');
+const {indexU, createU, editU, showU, storeU, destroyU, updateU} = require('../controllers/usuario.controller');
+const {indexF, createF, editF, showF, storeF, destroyF, updateF} = require('../controllers/frutas.controller');
+const {home} = require('../controllers/home.controller');
+
+// Home
 
 router.get('/', home);
 
-router.get("/", index);
+// Usuario
 
-router.get("/create", create);
+router.get("/usuario", indexU);
+router.get("/usuario/create", createU);
+router.get("/usuario/show/:id", showU);
+router.get("/usuario/edit/:id", editU);
 
-router.get("/show/:id", show);
+// Usuario API
 
-router.get("/edit/:id", edit);
 
-//API
 
-router.post("/store", store);
+// Frutas
 
-router.patch("/:id", update);
-
-router.delete("/:id", destroy);
+router.get("/fruta", indexF);
+router.get("/fruta/create", createF);
+router.get("/fruta/show/:id", showF);
+router.get("/fruta/edit/:id", editF);
 
 module.exports = router;

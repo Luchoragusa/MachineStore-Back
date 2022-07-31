@@ -22,8 +22,8 @@
           <div class="row">
             <div class="col-sm-4 offset-md-1 py-4">
               <ul class="list-unstyled">
-                <li><a href="/usuario" class="text-white">Home</a></li>
-                <li><a href="/usuario/create" class="text-white">Create</a></li>
+                <li><a href="/" class="text-white">Home</a></li>
+                <li><a href="/create" class="text-white">Create</a></li>
               </ul>
             </div>
           </div>
@@ -32,7 +32,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Editar usuario</strong>
+            <strong>Usuario #<%= elemento.id %></strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,46 +48,40 @@
           <form class="row g-3 needs-validation" method="POST" action="/api/store" novalidate>
             <div class="col-md-12 py-4">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" name="nombre" id="nombre" value="<%= elemento.nombre %>" required>
-              <input type="hidden" class="form-control" name="id" id="id" value="<%= elemento.id %>" required>
+              <input type="text" class="form-control" value="<%= elemento.nombre %>" readonly>
+              <input type="hidden" name="id" id="id" value="<%= elemento.id %>">
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" type="submit" id="boton">Enviar</button>
+              <a href="/edit/<%= elemento.id %>" class="btn btn-primary">Editar</a>
+              <button class="btn btn-danger" name="boton" id="boton">Eliminar</button>
             </div>
           </form>
         </div>
       </section>
     </main>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script>
       const $boton = document.getElementById('boton');
 
       boton.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        let nombre = document.getElementById('nombre').value;
         let id = document.getElementById('id').value;
 
-        const data = await update(id,nombre);
+        const data = await destroy(id);
         console.log(data);
-        if (data.status == 201) {
-          alert(data.actualizado.nombre + ' agregado correctamente')
-          window.location.href = '/usuario';
+        if (data.status == 200) {
+          alert(data.eliminado[0].nombre + ' eliminado correctamente')
+          window.location.href = '/';
         } else {
           alert(data.error[0].msg)
         }
       })
 
-      const update = async (id,nombre) => {
+      const destroy = async (id) => {
         try {
           const request = await fetch('http://localhost:3000/'+id,{
-            method:"PATCH",
-            body: JSON.stringify({
-              nombre
-            }),
+            method:"DELETE",
             headers : {
               "Content-Type": "application/json",
             }
