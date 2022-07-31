@@ -1,7 +1,7 @@
 const Router = require('express');
 const router = Router();
 
-const {indexU, createU, editU, showU, storeU, destroyU, updateU} = require('../controllers/usuario.controller');
+const {indexU, createU, editU, showU, storeU, updateU, destroyU} = require('../controllers/usuario.controller');
 const {indexF, createF, editF, showF, storeF, destroyF, updateF} = require('../controllers/frutas.controller');
 const {home} = require('../controllers/home.controller');
 
@@ -18,7 +18,9 @@ router.get("/usuario/edit/:id", editU);
 
 // Usuario API
 
-
+router.post("/usuario/store", storeU);
+router.patch("/usuario/:id", updateU);
+router.delete("/usuario/:id", destroyU);
 
 // Frutas
 

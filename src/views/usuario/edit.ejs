@@ -71,7 +71,7 @@
         let nombre = document.getElementById('nombre').value;
         let id = document.getElementById('id').value;
 
-        const data = await update(id,nombre);
+        const data = await updateU(id,nombre);
         console.log(data);
         if (data.status == 201) {
           alert(data.actualizado.nombre + ' agregado correctamente')
@@ -81,7 +81,7 @@
         }
       })
 
-      const update = async (id,nombre) => {
+      const updateU = async (id,nombre) => {
         try {
           const request = await fetch('http://localhost:3000/'+id,{
             method:"PATCH",

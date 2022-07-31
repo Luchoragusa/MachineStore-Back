@@ -81,7 +81,7 @@
 
       const store = async (nombre) => {
         try {
-          const request = await fetch('http://localhost:3000/store',{
+          const request = await fetch('http://localhost:3000/usuario/store',{
             method:"POST",
             body: JSON.stringify({
               nombre
