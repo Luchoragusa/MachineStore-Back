@@ -14,6 +14,10 @@ let usuario = [
     }
 ]
 
+const home = async (req,res) => {
+    return res.render('../src/views/home');
+};
+
 const index = async (req,res) => {
     return res.render('../src/views/usuario/index', {usuario});
 };
@@ -64,6 +68,7 @@ const destroy = async (req,res) => {
 };
 
 module.exports = {
+    home,
     index,
     create,
     show,

@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({extend:false}));
 app.use(json());
 
+app.use(express.static(__dirname + '/public'));
+
 //Rutas
 app.use('/', router);
 
