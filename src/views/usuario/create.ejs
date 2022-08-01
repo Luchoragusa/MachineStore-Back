@@ -73,7 +73,7 @@
         console.log(data);
         if (data.status == 200) {
           alert(data.nombre + ' ' + data.msg)
-          window.location.href = '/';
+          window.location.href = '/usuario';
         } else {
           alert(data.error[0].msg)
         }

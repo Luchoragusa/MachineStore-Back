@@ -22,8 +22,8 @@
           <div class="row">
             <div class="col-sm-4 offset-md-1 py-4">
               <ul class="list-unstyled">
-                <li><a href="/" class="text-white">Home</a></li>
-                <li><a href="/create" class="text-white">Create</a></li>
+                <li><a href="/fruta" class="text-white">Home</a></li>
+                <li><a href="/fruta/create" class="text-white">Create</a></li>
               </ul>
             </div>
           </div>
@@ -32,7 +32,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Usuario #<%= elemento.id %></strong>
+            <strong>Fruta #<%= elemento.id %></strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
               <input type="hidden" name="id" id="id" value="<%= elemento.id %>">
             </div>
             <div class="col-12">
-              <a href="/edit/<%= elemento.id %>" class="btn btn-primary">Editar</a>
+              <a href="/fruta/edit/<%= elemento.id %>" class="btn btn-primary">Editar</a>
               <button class="btn btn-danger" name="boton" id="boton">Eliminar</button>
             </div>
           </form>
@@ -71,8 +71,8 @@
         const data = await destroy(id);
         console.log(data);
         if (data.status == 200) {
-          alert(data.eliminado[0].nombre + ' eliminado correctamente')
-          window.location.href = '/';
+          alert(data.eliminado[0].nombre + ' eliminada correctamente')
+          window.location.href = '/fruta';
         } else {
           alert(data.error[0].msg)
         }
@@ -80,7 +80,7 @@
 
       const destroy = async (id) => {
         try {
-          const request = await fetch('http://localhost:3000/'+id,{
+          const request = await fetch('http://localhost:3000/fruta/'+id,{
             method:"DELETE",
             headers : {
               "Content-Type": "application/json",

@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968322.png">
 
-    <title>Agregar usuario</title>
+    <title>Agregar Fruta</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
 
@@ -32,7 +32,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Crear usuario</strong>
+            <strong>Crear Fruta</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@
         console.log(data);
         if (data.status == 200) {
           alert(data.nombre + ' ' + data.msg)
-          window.location.href = '/';
+          window.location.href = '/fruta';
         } else {
           alert(data.error[0].msg)
         }
@@ -81,7 +81,7 @@
 
       const store = async (nombre) => {
         try {
-          const request = await fetch('http://localhost:3000/store',{
+          const request = await fetch('http://localhost:3000/fruta/store',{
             method:"POST",
             body: JSON.stringify({
               nombre
