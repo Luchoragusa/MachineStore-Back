@@ -5,12 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-
-      // Como creo deberia ser
-      // User.belongsToMany(models.Game, {through: 'Usergame', foreignKey: 'idUser'});
-
-      // Como me funciona
-      User.hasMany(models.Usergame, {foreignKey: 'idUser'});
+       User.belongsToMany(models.Game, {through: 'Usergame', foreignKey: 'idUser'});
+        User.hasMany(models.Usergame, {foreignKey: 'idUser'});
 
       User.belongsTo(models.Role, {foreignKey: 'idRole'});
     }
@@ -51,6 +47,17 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    seed: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: {
+          args: [5,20],
+          msg: "La seed debe contener entre 5 a 20 caracteres"
+        }
+      }
+    },
     password: {
       type: DataTypes.STRING(150),
       allowNull: false
@@ -60,14 +67,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 2 // Lo crea como usuario
     },
-    resetToken: {
-      type: DataTypes.STRING(1020),
-      allowNull: true
+    confirmed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     },
-    refreshToken: {
-      type: DataTypes.STRING(1020),
-      allowNull: true
-    }
   }, {
     sequelize,
     modelName: 'User',

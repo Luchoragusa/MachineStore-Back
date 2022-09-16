@@ -5,13 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Game extends Model {
     static associate(models) {
-      // Como creo deberia ser
-      //Game.belongsToMany(models.User, {through: 'Usergame', foreignKey: 'idGame'});
-
-      // Como me funciona
+      Game.belongsToMany(models.User, {through: 'Usergame', foreignKey: 'idGame'});
       Game.hasMany(models.Usergame, {foreignKey: 'idGame'});
-
-
+      
       Game.belongsTo(models.Developer, {foreignKey: 'idDeveloper'});
       Game.belongsTo(models.Category, {foreignKey: 'idCategory'});
     }
@@ -34,6 +30,29 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [10,200],
           msg: "El link no es valido"
+        }
+      }
+    },
+    trailer: {
+      type: DataTypes.STRING(300),
+      allowNull: false,
+      validate: {
+        len: {
+          args: [100,300],
+          msg: "El link no es valido"
+        }
+      }
+    },
+    isAvailable: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      validate: {
+        isDate: {
+          msg: "La fecha no es valida"
         }
       }
     },

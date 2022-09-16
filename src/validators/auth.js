@@ -13,13 +13,13 @@ const validateLogin = [
         .exists()
         .isLength({min:6})
         .withMessage('La contraseña debe contener mas de 6 caracteres'),
+
     (req, res, next) => {
         validateResult(req, res, next)
     }
 ]
 
 const validateRegister = [
-    
     check('email')
         .exists()
         .isLength({min:5})
@@ -34,6 +34,15 @@ const validateRegister = [
         .exists()
         .isLength({min:6})
         .withMessage('La contraseña debe contener mas de 6 caracteres'),
+    check('name')
+        .exists()
+        .isLength({min:3})
+        .withMessage('El nombre debe contener mas de 3 caracteres'),
+    check('surname')
+        .exists()
+        .isLength({min:3})
+        .withMessage('El apellido debe contener mas de 3 caracteres'),
+
     (req, res, next) => {
         validateResult(req, res, next)
     }
