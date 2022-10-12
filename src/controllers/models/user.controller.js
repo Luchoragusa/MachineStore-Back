@@ -145,7 +145,7 @@ const validateToken =  async (req, res) => {
             u.update({
                 confirmed: true
             }).then(u => {
-                return res.redirect('http://ljragusa.us:4200/auth/login');
+                return res.redirect('http://186.182.43.139:4200/auth/login');
             })
         } else {
             return res.status(404).json({'msg':'No se recibieron los datos'})
@@ -186,12 +186,6 @@ const login = async (req, res) => {
     }
 }
 
-// const logOut = async (req, res, next) => {
-//     //Eliminar cookie jwt
-//     res.clearCookie('jwt')
-//     //Redirigir a la vista de login
-//     return res.redirect('/login')
-// };
 
 const createToken = (u) => {
     const payload = {
