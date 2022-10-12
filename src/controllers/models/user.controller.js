@@ -206,5 +206,4 @@ module.exports = {
     login,
     deleteOne,
     validateToken
-//    logOut
 };
