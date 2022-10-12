@@ -17,9 +17,7 @@ const UserGameExist = async (req, res, next) => {
    if (userGame) {
        return res.status(404).json({ msg: 'Ya compraste este juego' });
    }else
-   {
          next();
-   }
   };
 
 module.exports = {
