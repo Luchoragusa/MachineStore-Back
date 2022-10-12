@@ -16,7 +16,6 @@ router.post('/register', validateRegister, EmailIsUnique, register); // Registra
 router.post('/login', validateLogin, checkVerification, login); // crea uno
 router.patch('/:id', checkToken, update); // actualiza uno
 router.delete('/:id', checkToken, policy, deleteOne); // borra uno
-// router.post('/logout', checkToken, logOut); // cierra sesion
 router.get('/:id/games', checkToken, findGamesByUser); // Te devuelve todos los juegos que tiene el usuario
 router.get('/confirm/:token', validateToken); // Te devuelve todos los juegos que tiene el usuario
 
