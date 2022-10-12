@@ -5,13 +5,11 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const config = require('../../config/config');
-const usergame = require('./Usergame');
 const db = {};
 
 //Crear conexion
 let sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-//Asociaciones y vinculaciones
 fs
   .readdirSync(__dirname)
   .filter(file => {
