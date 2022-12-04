@@ -23,6 +23,7 @@
     "moment": "2.29.4",
     "mysql2": "2.3.3",
     "nodemailer": "^6.7.8",
+    "nodemailer-express-handlebars": "^5.0.0",
     "sequelize": "6.21.3"
   },
   "devDependencies": {
