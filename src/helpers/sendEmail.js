@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const jwt = require('jwt-simple');
 
-const logo = 'https://cdn.discordapp.com/attachments/852889034723426324/1017860857302102076/Logo2.png';
+const logo = 'https://cdn.discordapp.com/attachments/852889034723426324/998718998516617466/icono-MS-black.png';
 const urlTienda = ''
 const sendConfirmationEmail = async (user) => {
     try{
@@ -20,7 +20,7 @@ const sendConfirmationEmail = async (user) => {
 
         await transporter.sendMail({
             from: {
-                name: 'Dale play',
+                name: 'Machine Store',
                 address: process.env.EMAIL
             },
             to: user.email,
@@ -277,7 +277,7 @@ const sendPurchasenEmail = async (user, game) => {
 
         await transporter.sendMail({
             from: {
-                name: 'Dale play',
+                name: 'Machine Store',
                 address: process.env.EMAIL
             },
             to: user.email,
