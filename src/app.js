@@ -5,10 +5,11 @@ const { roles, categories, developers, users, games, usergames } = require('./da
 const {Role, Category, Developer, User, Game, Usergame} = require('./database/models/index');
 
 const PORT = process.env.PORT || 3000;
+const sync = process.env.SYNCRONIZE;
 
 http.listen(PORT, () => {
     console.log(`Running on a port: ${PORT}`);
-    sequelize.sync({ force: false }).then(() => { // Si pongo el force en true se crean las tablas de nuevo
+    sequelize.sync({ sync }).then(() => { // Si pongo el force en true se crean las tablas de nuevo
         console.log('Conexion a DB exitosa'); })
 
 
