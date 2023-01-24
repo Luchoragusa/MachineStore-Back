@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 const { EmailIsUniqueB } = require('../../validators/EmailIsUnique');
-const externalApi = require('../../helpers/externalApi');
 const { sendConfirmationEmail } = require('../../helpers/sendEmail');
 
 const getOne = async (req, res) => {
@@ -18,13 +17,9 @@ const getOne = async (req, res) => {
             return res.status(404).json({ msg: 'Usuario no encontrado' });
         } else {
             // Econtro el usuario en la db
-            const seed = user.seed;
-            const url = await externalApi(seed);
 
             // Devuelvo todos los datos y la url de la imagen
             let u = user.dataValues;
-            u.image = url;
-
             return res.status(200).json(u);
         }
     } catch (error) {
@@ -44,12 +39,6 @@ const getAll = async (req, res) => {
         } else {
             const usersArray = [];
             const promises = users.map(async (user) => {
-                const seed = user.seed;
-                const url = await externalApi(seed);
-
-                // Devuelvo todos los datos y la url de la imagen
-                user.dataValues.image = url;
-
                 usersArray.push(user);
             });
             // Espero a que se resuelvan todas las promesas

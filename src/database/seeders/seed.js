@@ -22,7 +22,7 @@ const developers = [
 ];
 
 const users = [
-    { id: 1, name: 'Admin', surname: 'Admin', email: 'admin@gmail.com', password: bcrypt.hashSync('admin123', 10), confirmPassword: 'admin', confirmed: true, idRole: 1, seed: 'd3d94490f89e9120' },
+    { id: 1, name: 'Admin', surname: 'Admin', email: 'admin@gmail.com', password: bcrypt.hashSync('admin123', 10), confirmPassword: 'admin', confirmed: true, idRole: 1 },
     { id: 2, name: 'User', surname: 'User', email: 'user@gmail.com', password: bcrypt.hashSync('user123', 10), confirmPassword: 'user', confirmed: true, idRole: 2 },
 ];
 
