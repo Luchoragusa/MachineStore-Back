@@ -7,8 +7,10 @@ const { Game } = require('../../database/models/index');
 const { validateGame } = require('../../validators/input');
 
 // Genericas
-router.post('/', checkToken, policy, validateGame, createOne(Game)); // crea uno
+// router.post('/', checkToken, policy, validateGame, createOne(Game)); // crea uno
 router.patch('/:id', checkToken, policy, validateGame,  updateOne(Game)); // actualiza uno
+
+router.post('/', checkToken, policy, validateGame, createOne(Game)); // crea uno
 
 // Especificas
 router.get('/', getAll); // muestra todos
