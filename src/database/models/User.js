@@ -61,6 +61,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: false
     },
+    image: {
+      type: DataTypes.STRING(200),
+      allowNull: true,
+      validate: {
+          len: {
+              args: [0,200],
+              msg: "La imagen debe contener como maximo 200 caracteres"
+          }
+      },
+  },
   }, {
     sequelize,
     modelName: 'User',
