@@ -62,7 +62,6 @@ const update = async (req,res) => {
             let email = u.email;
             // Valido para cambiar el correo
             if (u.email != params.email){ // El mail del body es distinto al del usuario
-                console.log("Voy a validar el email")
                 const emailUnique = await EmailIsUniqueB(req, res); // Valido si ese mail lo tiene otro usuario
 
                 if (emailUnique){
@@ -76,8 +75,7 @@ const update = async (req,res) => {
                 name: params.name || u.name,
                 surname: params.surname || u.surname,
                 idRole: params.idRole || u.idRole,
-                email: email,
-                seed: params.seed || u.seed,
+                email: email
             }).then(u => {
             res.status(201).json({u, 'msg':'Editado correctamente'})
             })
@@ -212,6 +210,7 @@ const register =  async (req, res) => {
     try{
         req.body.password = bcrypt.hashSync(req.body.password, 10); // tomo la pw que me llega, la encripto y la guardo en el campo password
         req.body.image = req.file.originalname;
+
         const u = await User.create(req.body);
         sendConfirmationEmail(u);
         if (u) {

@@ -45,6 +45,7 @@ const validateRegister = [
 
     (req, res, next) => {
         validateResult(req, res, next)
+        console.log(req.body)
     }
 ]
 

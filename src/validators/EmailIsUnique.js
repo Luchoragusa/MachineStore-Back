@@ -1,6 +1,9 @@
 const { User } = require('../database/models/index');
 
 const EmailIsUnique = async (req, res, next) => {
+
+  console.log('Este es el mail: '+ req.body.email)
+
   const user = await User.findOne({ where: { email: req.body.email } })
   if (user) {
       //Email ya esta en la DB
