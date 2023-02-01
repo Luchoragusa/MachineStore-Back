@@ -83,11 +83,6 @@ const validateGame = [
         .withMessage('Debe contener un estado de disponibilidad')
         .isBoolean()
         .withMessage('No es un estado valido'),
-    check('date')
-        .exists()
-        .withMessage('Debe contener una fecha')
-        .isDate()
-        .withMessage('La fecha no es valida'),
         
     // Validar que la categoria exista
     async (req, res, next) => {
