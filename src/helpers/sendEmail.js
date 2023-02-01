@@ -77,7 +77,7 @@ const sendPurchasenEmail = async (user) => {
         if(err){
             console.log(err);
         }else{
-            console.log("Email sent: " + info);
+            console.log("Email sent " );
         }
     });
 

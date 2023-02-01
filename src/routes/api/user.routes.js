@@ -11,7 +11,7 @@ const { findGamesByUser } = require('../../controllers/models/game.controller');
 //  Especificas
 router.get('/', checkToken, getAll); // muestra todos
 router.get('/:id', checkToken, getOne); // muestra uno
-router.post('/register', /*validateRegister,*/ EmailIsUnique, uploadImage, register); // Registrar un usuario en la DB
+router.post('/register', uploadImage, validateRegister, EmailIsUnique,  register); // Registrar un usuario en la DB
 
 router.post('/login', validateLogin, checkVerification, login); // Logearse
 router.patch('/:id', checkToken, update); // actualiza uno
