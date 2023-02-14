@@ -1,4 +1,5 @@
 const { Game, Category, Developer, User, Usergame } = require('../../database/models/index');
+const multer = require('multer');
 
 const getOne = async (req,res) => {
     try {
@@ -152,6 +153,60 @@ const findGamesByUser = async (req,res) => {
     }
 };
 
+// =========== Cargo la imagen ===========
+
+// Filtro de archivos
+const fileFilter=function(req,file,cb){
+    const allowedTypes=["image/jpg","image/jpeg","image/png"];
+    if(!allowedTypes.includes(file.mimetype)){
+
+        const error=new Error("wrong file type");
+        error.code="LIMIT_FILE_TYPES";
+        return cb(error,false);
+      }
+      cb(null,true);
+}
+
+// Es donnde se guardan los archivos y el nmobre que van a tener
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './images/games')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+    
+// Es la cte donde seteamos la configuracion de multer
+
+const upload=multer({storage,fileFilter});
+
+// Es la funcion que se va a ejecutar cuando se haga la peticion
+
+const uploadImage = upload.single('image')
+
+// =======================================
+
+// =========== Creo el usuario ===========
+
+const addGame =  async (req, res) => {
+    try{
+        const game = await Game.create(req.body);
+        if (game) {
+            return res.status(201).json({'msg':'Creado correctamente', game})
+        } else {
+            return res.status(404).json({'msg':'No se recibieron los datos'})
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Error en el servidor' });
+    }
+}
+
+// =======================================
+
+
+
 module.exports = {
     findGamesByCategory,
     findGamesByDeveloper,
@@ -159,4 +214,6 @@ module.exports = {
     getOne,
     getAll,
     deleteOne,
+    addGame,
+    uploadImage
 };
