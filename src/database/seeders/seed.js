@@ -157,7 +157,7 @@ const games = [
         name: 'League of Legends',
         idCategory: 4,
         idDeveloper: 4,
-        image: 'LOL',
+        image: 'LOL.png',
         valoration: 5,
         description: 'League of Legends es un videojuego de estrategia en línea y multijugador masivo desarrollado y publicado por Riot Games para Microsoft Windows y macOS. Es un juego gratuito para jugar, pero los jugadores pueden comprar paquetes de contenido adicional.',
         trailer: '<iframe width="560" height="315" src="https://www.youtube.com/embed/7O21Z6vgtmY?autoplay=1&mute=1&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',

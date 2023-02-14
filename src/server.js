@@ -20,6 +20,7 @@ app.use('/', router);
 
 // Ruta publica
 app.use(express.static('./images/users'));
+app.use(express.static('./images/games'));
 
 app.use((req, res, next) => {
   res.status(404).json({
