@@ -25,13 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     image: {
       type: DataTypes.STRING(200),
-      allowNull: false,
-      validate: {
-        len: {
-          args: [10,200],
-          msg: "El link no es valido"
-        }
-      }
+      allowNull: false
     },
     trailer: {
       type: DataTypes.STRING(300),

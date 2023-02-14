@@ -58,11 +58,6 @@ const validateGame = [
         .withMessage('Debe contener una id del desarrollador.')
         .isNumeric()
         .withMessage('La id del desarrollador solo puede ser un numero.'),
-    // check('image')
-    //     .exists()
-    //     .withMessage('Debe contener una imagen')
-    //     .isURL()
-    //     .withMessage('El link no es valido'),
     check('valoration')
         .exists()
         .withMessage('Debe contener una valoracion')
